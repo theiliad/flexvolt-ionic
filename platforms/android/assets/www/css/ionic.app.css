@@ -16,13 +16,13 @@ $royal:                           #8a6de9 !default;
 $dark:                            #444 !default;
 */
 .fv-theme {
-  background-color: #ffd383; }
+  background-color: #ffffff; }
 
 /* FlexVolt CSS */
 .fv-hr {
-  height: 2px;
-  color: black;
-  background-color: black;
+  height: 1px;
+  color: #eaeaea;
+  background-color: #eaeaea;
   border: none; }
 
 .fv-message {
@@ -41,7 +41,8 @@ path.line {
 .home-page-icons:before,
 .home-page-icons {
   font-size: 60px !important;
-  display: block !important; }
+  display: block !important;
+  color: #4c8bff; }
 
 i.record-icon {
   font-size: 40px !important; }
@@ -4112,12 +4113,12 @@ a.subdued {
     .bar.bar-assertive.bar-footer {
       background-image: linear-gradient(180deg, #e42112, #e42112 50%, transparent 50%); }
   .bar.bar-balanced {
-    border-color: #28a54c;
-    background-color: #33cd5f;
-    background-image: linear-gradient(0deg, #28a54c, #28a54c 50%, transparent 50%);
-    color: #000; }
+    border-color: #4c8bff;
+    background-color: #4c8bff;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(76, 139, 255, 0.3); }
     .bar.bar-balanced .title {
-      color: #000; }
+      color: #fff; }
     .bar.bar-balanced.bar-footer {
       background-image: linear-gradient(180deg, #28a54c, #28a54c 50%, transparent 50%); }
   .bar.bar-energized {
@@ -4207,6 +4208,10 @@ a.subdued {
       font-weight: 400; }
     .bar .button.back-button.active, .bar .button.back-button.activated, .bar button.back-button.active, .bar button.back-button.activated {
       opacity: 0.2; }
+
+    .back-button:before {
+      color: #fff !important;
+    }
   .bar .button-bar > .button,
   .bar .buttons > .button {
     min-height: 31px;
@@ -8908,14 +8913,19 @@ progress {
         color: #fff; }
   .button.button-balanced {
     border-color: transparent;
-    background-color: #33cd5f;
-    color: #000; }
+    border-color: transparent;
+    background-color: #4c8bff;
+    box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    font-size: 14px;
+    padding: 6px 15px; }
     .button.button-balanced:hover {
-      color: #000;
+      background: #659bff;
+      color: #fff;
       text-decoration: none; }
     .button.button-balanced.active, .button.button-balanced.activated {
-      border-color: #a2a2a2;
-      background-color: #28a54c; }
+      border-color: #4c8bff;
+      background-color: #4c8bff; }
     .button.button-balanced.button-clear {
       border-color: transparent;
       background: none;

@@ -33,8 +33,9 @@
         function updateAnimate(){
             if ($scope.updating)return; // don't try to draw any graphics while the settings are being changed
 
-            var dataIn = dataHandler.getData();
-            //console.log(dataIn);
+            var dataIn = dataHandler.getData()
+            const positiveData = dataIn[1].map(data => Math.abs(data))
+            console.log("DATA IN", positiveData)
             if (dataIn === null || dataIn === angular.undefined ||
                 dataIn[0] === angular.undefined || dataIn[0].length === 0){return;}
             tracePlot.update(dataIn, dataHandler.controls.live);

@@ -1,11 +1,4 @@
 /* FlexVolt CSS */
-.fv-hr {
-  height: 2px;
-  color: black;
-  background-color: black;
-  border: none;
-}
-
 .fv-message {
   padding: 25px;
   color: black;
@@ -61,7 +54,7 @@ i.record-icon{
     left: 3%;
     right: 3%;
     bottom: 3%;
-    border: 10px solid #33cd5f; // ionic $balanced
+    border: 10px solid #33cd5f;
     border-radius: 8px;
 }
 

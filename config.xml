@@ -17,6 +17,7 @@
     <preference name="SplashScreenDelay" value="1000" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="android-targetSdkVersion" value="25" />
+    <preference name="cordova.plugins.diagnostic.modules" value="LOCATION BLUETOOTH WIFI MICROPHONE EXTERNAL_STORAGE" />
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
@@ -84,4 +85,6 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.3" />
     <engine name="ios" spec="~4.3.1" />
     <engine name="android" spec="^6.2.2" />
+    <plugin name="cordova.plugins.diagnostic" spec="^4.0.3" />
+    <allow-navigation href="http://172.17.205.124:8100" />
 </widget>

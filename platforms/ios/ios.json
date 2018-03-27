@@ -41,6 +41,66 @@
                         {
                             "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic\"><param name=\"ios-package\" value=\"Diagnostic\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic_Location\"><param name=\"ios-package\" value=\"Diagnostic_Location\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic_Bluetooth\"><param name=\"ios-package\" value=\"Diagnostic_Bluetooth\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic_Wifi\"><param name=\"ios-package\" value=\"Diagnostic_Wifi\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic_Camera\"><param name=\"ios-package\" value=\"Diagnostic_Camera\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<framework src=\"Photos.framework\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<framework src=\"AVFoundation.framework\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<config-file parent=\"NSCameraUsageDescription\" target=\"*-Info.plist\"><string>This app requires camera access to function properly.</string></config-file>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<config-file parent=\"NSPhotoLibraryUsageDescription\" target=\"*-Info.plist\"><string>This app requires photo library access to function properly.</string></config-file>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic_Notifications\"><param name=\"ios-package\" value=\"Diagnostic_Notifications\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic_Microphone\"><param name=\"ios-package\" value=\"Diagnostic_Microphone\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic_Contacts\"><param name=\"ios-package\" value=\"Diagnostic_Contacts\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic_Calendar\"><param name=\"ios-package\" value=\"Diagnostic_Calendar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic_Reminders\"><param name=\"ios-package\" value=\"Diagnostic_Reminders\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic_Motion\"><param name=\"ios-package\" value=\"Diagnostic_Motion\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -50,6 +110,58 @@
                     "NSBluetoothPeripheralUsageDescription": [
                         {
                             "xml": "<string>This app would like to scan for a FlexVolt sensor.</string>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<string>This app requires bluetooth access to function properly.</string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSLocationWhenInUseUsageDescription": [
+                        {
+                            "xml": "<string>This app requires access to your location when the screen is on and the app is displayed.</string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSLocationAlwaysAndWhenInUseUsageDescription": [
+                        {
+                            "xml": "<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSLocationAlwaysUsageDescription": [
+                        {
+                            "xml": "<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSMicrophoneUsageDescription": [
+                        {
+                            "xml": "<string>This app requires microphone access to function properly.</string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSContactsUsageDescription": [
+                        {
+                            "xml": "<string>This app requires contacts access to function properly.</string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSCalendarsUsageDescription": [
+                        {
+                            "xml": "<string>This app requires calendar access to function properly.</string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSRemindersUsageDescription": [
+                        {
+                            "xml": "<string>This app requires reminders access to function properly.</string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSMotionUsageDescription": [
+                        {
+                            "xml": "<string>This app requires motion detection access to function properly.</string>",
                             "count": 1
                         }
                     ]
@@ -81,6 +193,9 @@
             "PACKAGE_NAME": "com.catabee.flexvolt.viewer"
         },
         "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.catabee.flexvolt.viewer"
+        },
+        "cordova.plugins.diagnostic": {
             "PACKAGE_NAME": "com.catabee.flexvolt.viewer"
         }
     },
@@ -134,6 +249,94 @@
             "clobbers": [
                 "navigator.splashscreen"
             ]
+        },
+        {
+            "id": "cordova.plugins.diagnostic.Diagnostic",
+            "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.js",
+            "pluginId": "cordova.plugins.diagnostic",
+            "merges": [
+                "cordova.plugins.diagnostic"
+            ]
+        },
+        {
+            "id": "cordova.plugins.diagnostic.Diagnostic_Location",
+            "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.location.js",
+            "pluginId": "cordova.plugins.diagnostic",
+            "merges": [
+                "cordova.plugins.diagnostic.location"
+            ]
+        },
+        {
+            "id": "cordova.plugins.diagnostic.Diagnostic_Bluetooth",
+            "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.bluetooth.js",
+            "pluginId": "cordova.plugins.diagnostic",
+            "merges": [
+                "cordova.plugins.diagnostic.bluetooth"
+            ]
+        },
+        {
+            "id": "cordova.plugins.diagnostic.Diagnostic_Wifi",
+            "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.wifi.js",
+            "pluginId": "cordova.plugins.diagnostic",
+            "merges": [
+                "cordova.plugins.diagnostic.wifi"
+            ]
+        },
+        {
+            "id": "cordova.plugins.diagnostic.Diagnostic_Camera",
+            "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.camera.js",
+            "pluginId": "cordova.plugins.diagnostic",
+            "merges": [
+                "cordova.plugins.diagnostic.camera"
+            ]
+        },
+        {
+            "id": "cordova.plugins.diagnostic.Diagnostic_Notifications",
+            "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.notifications.js",
+            "pluginId": "cordova.plugins.diagnostic",
+            "merges": [
+                "cordova.plugins.diagnostic.notifications"
+            ]
+        },
+        {
+            "id": "cordova.plugins.diagnostic.Diagnostic_Microphone",
+            "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.microphone.js",
+            "pluginId": "cordova.plugins.diagnostic",
+            "merges": [
+                "cordova.plugins.diagnostic.microphone"
+            ]
+        },
+        {
+            "id": "cordova.plugins.diagnostic.Diagnostic_Contacts",
+            "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.contacts.js",
+            "pluginId": "cordova.plugins.diagnostic",
+            "merges": [
+                "cordova.plugins.diagnostic.contacts"
+            ]
+        },
+        {
+            "id": "cordova.plugins.diagnostic.Diagnostic_Calendar",
+            "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.calendar.js",
+            "pluginId": "cordova.plugins.diagnostic",
+            "merges": [
+                "cordova.plugins.diagnostic.calendar"
+            ]
+        },
+        {
+            "id": "cordova.plugins.diagnostic.Diagnostic_Reminders",
+            "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.reminders.js",
+            "pluginId": "cordova.plugins.diagnostic",
+            "merges": [
+                "cordova.plugins.diagnostic.reminders"
+            ]
+        },
+        {
+            "id": "cordova.plugins.diagnostic.Diagnostic_Motion",
+            "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.motion.js",
+            "pluginId": "cordova.plugins.diagnostic",
+            "merges": [
+                "cordova.plugins.diagnostic.motion"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -144,6 +347,7 @@
         "cordova-plugin-whitelist": "1.3.3",
         "cordova-plugin-statusbar": "2.2.3",
         "ionic-plugin-keyboard": "2.2.1",
-        "cordova-plugin-splashscreen": "4.0.3"
+        "cordova-plugin-splashscreen": "4.0.3",
+        "cordova.plugins.diagnostic": "4.0.3"
     }
 }

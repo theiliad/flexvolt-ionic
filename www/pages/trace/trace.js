@@ -18,6 +18,8 @@
         $scope.pageLogic = traceLogic;
         $scope.hardwareLogic = hardwareLogic;
         $scope.updating = false;
+        $scope.samplesArray = []
+        $scope.sampleAvg = []
 
         $scope.onChange = function(){
             if (afID){
@@ -33,8 +35,19 @@
         function updateAnimate(){
             if ($scope.updating)return; // don't try to draw any graphics while the settings are being changed
 
-            var dataIn = dataHandler.getData();
-            //console.log(dataIn);
+            var dataIn = dataHandler.getData()
+            const positiveData = dataIn[1].map(data => Math.abs(data))
+            positiveData.map(data => {
+                if ($scope.samplesArray.length < 10) {
+                    $scope.samplesArray.push(data)
+                } else {
+                    const newAvg = $scope.samplesArray.reduce((p, c) => p + c, 0) / 10
+                    $scope.sampleAvg.push()
+                    $scope.samplesArray = []
+
+                    console.log("New Avg.", newAvg)
+                }
+            })
             if (dataIn === null || dataIn === angular.undefined ||
                 dataIn[0] === angular.undefined || dataIn[0].length === 0){return;}
             tracePlot.update(dataIn, dataHandler.controls.live);
