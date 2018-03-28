@@ -18,42 +18,6 @@
                             btnName:"Trace"
                         },
                         b3: {
-                            icon:"icon ion-ios-navigate",
-                            ref:"godot",
-                            btnName:"Go Dot"
-                        },
-                        b4:{
-                            icon:"icon ion-ios-pulse",
-                            ref:"rms",
-                            btnName:"RMS Plot"
-                        }
-                    },
-                    row2: {
-                        b1: {
-                            icon:"icon ion-speedometer",
-                            ref:"myometer",
-                            btnName:"Myometer"
-                        },
-                        b2: {
-                            icon:"icon ion-android-pin",
-                            ref:"balloon",
-                            btnName:"Balloon"
-                        }
-                    }
-                },
-                controls: {
-                    row1: {
-                        b1: {
-                            icon:"icon ion-briefcase",
-                            ref:"demos",
-                            btnName:"Demos"
-                        },
-                        // b2: {
-                        //     icon:"icon ion-help",
-                        //     ref:"help",
-                        //     btnName:"Help"
-                        // },
-                        b3: {
                             icon:"icon ion-settings",
                             ref:"settings",
                             btnName:"Settings"
@@ -63,8 +27,54 @@
                             ref:"connection",
                             btnName:"Connection"
                         }
-                    }
-                }
+                        // b3: {
+                        //     icon:"icon ion-ios-navigate",
+                        //     ref:"godot",
+                        //     btnName:"Go Dot"
+                        // },
+                        // b4:{
+                        //     icon:"icon ion-ios-pulse",
+                        //     ref:"rms",
+                        //     btnName:"RMS Plot"
+                        // }
+                    },
+                    // row2: {
+                    //     b1: {
+                    //         icon:"icon ion-speedometer",
+                    //         ref:"myometer",
+                    //         btnName:"Myometer"
+                    //     },
+                    //     b2: {
+                    //         icon:"icon ion-android-pin",
+                    //         ref:"balloon",
+                    //         btnName:"Balloon"
+                    //     }
+                    // }
+                },
+                // controls: {
+                //     row1: {
+                //         b1: {
+                //             icon:"icon ion-briefcase",
+                //             ref:"demos",
+                //             btnName:"Demos"
+                //         },
+                //         // b2: {
+                //         //     icon:"icon ion-help",
+                //         //     ref:"help",
+                //         //     btnName:"Help"
+                //         // },
+                //         b3: {
+                //             icon:"icon ion-settings",
+                //             ref:"settings",
+                //             btnName:"Settings"
+                //         },
+                //         b4: {
+                //             icon:"icon ion-radio-waves",
+                //             ref:"connection",
+                //             btnName:"Connection"
+                //         }
+                //     }
+                // }
             }
     //                row3:{
     //                    b1:{

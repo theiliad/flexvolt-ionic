@@ -15,11 +15,11 @@
       <!-- <div id="traceWindow" class="row fullsizeplot" style="overflow: scroll;"></div> -->
 
       <!-- <average-popover></average-popover> -->
-      <button class="button" ng-click="startAveraging()" ng-disabled="performAveraging">
+      <button class="button" ng-click="startAveraging()" ng-disabled="performAveraging" ng-show="flexvolt.api.connection.state === 'connected'">
             {{performAveraging ? secondsLeft + 's' : 'Start'}}
       </button>
 
-      <button class="button" ng-click="averagePopover.show($event)" ng-disabled="samplesArray.length == 0">
+      <button class="button" ng-click="averagePopover.show($event)" ng-disabled="samplesArray.length == 0" ng-show="flexvolt.api.connection.state === 'connected'">
           Show Results
       </button>
 

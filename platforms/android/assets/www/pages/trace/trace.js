@@ -25,6 +25,8 @@
         $scope.performAveraging = false
         $scope.secondsLeft = 5
 
+        $scope.graphValues = []
+
         $scope.onChange = function(){
             if (afID){
               window.cancelAnimationFrame(afID);
@@ -52,6 +54,26 @@
                 }
             }, 1000)
         }
+
+
+        // array = {
+        //     "25": 342342,
+        //     "50": 3523,
+        //     "75": 32423
+        // }
+        
+        // for (let i = 0; i <= 180; i++) {
+        //     let x = 0
+        //     for (let j = i; j <= i + 20; j++) {
+        //         x += array[i]
+        //     }
+
+        //     $scope.graphValues.push(x)
+        // }
+
+
+
+
 
         $scope.getAverageValues = function() {
             const values = $scope.sampleAvg.map(sampleItem => sampleItem / 0.3 * 100).join(",")
