@@ -23,8 +23,10 @@
         $scope.samplesArray = []
         $scope.sampleAvg = []
         $scope.performAveraging = false
-        $scope.secondsLeft = 5
+        $scope.secondsLeft = 5000
 
+        $scope.latestValue = 0
+        $scope.tempValues = []
         $scope.graphValues = []
 
         $scope.onChange = function(){
@@ -42,47 +44,51 @@
             $scope.performAveraging = true
             $scope.samplesArray = []
             $scope.sampleAvg = []
+            $scope.tempValues = []
+            $scope.graphValues = []
 
             $scope.interval = setInterval(function() {
                 console.log("INTERVAL")
-                $scope.secondsLeft--
+                $scope.secondsLeft -= 25
+                $scope.tempValues.push($scope.latestValue)
 
                 if ($scope.secondsLeft === 0) {
-                    clearInterval($scope.interval)
-                    $scope.performAveraging = false
-                    $scope.secondsLeft = 5
-                }
-            }, 1000)
-        }
+                    console.log("OVER")
+                    for (let i = 0; i <= 180; i++) {
+                        let x = 0
+                        for (let j = i; j <= i + 20; j++) {
+                            x += $scope.tempValues[i]
+                        }
+                        
+                        console.log(`X: ${x}`)
+                        console.log(typeof $scope.tempValues[2], parseInt($scope.tempValues[2]))
+                        $scope.graphValues.push(x)
+                    }
 
+                    console.log("FINAL RESULT", $scope.graphValues)
+
+                    $scope.performAveraging = false
+                    $scope.secondsLeft = 5000
+
+                    clearInterval($scope.interval)
+                }
+            }, 25)
+        }
 
         // array = {
         //     "25": 342342,
         //     "50": 3523,
         //     "75": 32423
         // }
-        
-        // for (let i = 0; i <= 180; i++) {
-        //     let x = 0
-        //     for (let j = i; j <= i + 20; j++) {
-        //         x += array[i]
-        //     }
-
-        //     $scope.graphValues.push(x)
-        // }
-
-
-
-
 
         $scope.getAverageValues = function() {
-            const values = $scope.sampleAvg.map(sampleItem => sampleItem / 0.3 * 100).join(",")
+            const values = $scope.graphValues.map(sampleItem => sampleItem / 3 * 100).join(",")
             // console.log(values)
             return {
                 values: values,
-                peak: (Math.max(...$scope.sampleAvg)).toFixed(6),
-                area: ($scope.sampleAvg.reduce((p, c) => p + c, 0)).toFixed(6),
-                average: ($scope.sampleAvg.reduce((p, c) => p + c, 0) / $scope.sampleAvg.length).toFixed(6)
+                peak: (Math.max(...$scope.graphValues)).toFixed(6),
+                area: ($scope.graphValues.reduce((p, c) => p + c, 0)).toFixed(6),
+                average: ($scope.graphValues.reduce((p, c) => p + c, 0) / $scope.graphValues.length).toFixed(6)
             }
         }
 
@@ -93,15 +99,17 @@
             const positiveData = dataIn[1].map(data => Math.abs(data))
             positiveData.map(data => {
                 if ($scope.performAveraging) {
-                    if ($scope.samplesArray.length < 10) {
-                        $scope.samplesArray.push(data)
-                    } else {
-                        const newAvg = $scope.samplesArray.reduce((p, c) => p + c, 0) / 10
-                        $scope.sampleAvg.push(newAvg)
-                        $scope.samplesArray = []
+                    // if ($scope.samplesArray.length < 10) {
+                    //     $scope.samplesArray.push(data)
+                    // } else {
+                    //     const newAvg = $scope.samplesArray.reduce((p, c) => p + c, 0) / 10
+                    //     $scope.sampleAvg.push(newAvg)
+                    //     $scope.samplesArray = []
 
-                        console.log("New Avg.", newAvg)
-                    }
+                    //     console.log("New Avg.", newAvg)
+                    // }
+
+                    $scope.latestValue = data
                 }
             })
             if (dataIn === null || dataIn === angular.undefined ||

@@ -19,7 +19,7 @@
             {{performAveraging ? secondsLeft + 's' : 'Start'}}
       </button>
 
-      <button class="button" ng-click="averagePopover.show($event)" ng-disabled="samplesArray.length == 0" ng-show="flexvolt.api.connection.state === 'connected'">
+      <button class="button" ng-click="averagePopover.show($event)" ng-disabled="graphValues.length == 0 || performAveraging" ng-show="flexvolt.api.connection.state === 'connected'">
           Show Results
       </button>
 
