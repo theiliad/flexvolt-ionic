@@ -67,6 +67,12 @@ angular.module('flexvolt.directives', [])
         template: '<button class="button button-icon" ng-click="filterpopover.show($event)"><i class="icon ion-levels dark"></i></button>'
     };
 })
+.directive('averagePopover', function(){
+    return {
+        restrict: 'E',
+        template: '<button class="button button-icon" ng-click="averagePopover.show($event)"><i class="icon ion-levels dark"></i></button>'
+    };
+})
 .directive('helpPopover', function(){
     return {
         restrict: 'E',

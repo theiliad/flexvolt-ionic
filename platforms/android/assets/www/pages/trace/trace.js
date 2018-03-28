@@ -12,12 +12,17 @@
 
         customPopover.add($ionicPopover, $scope, 'popover', 'pages/trace/trace-settings.html',traceLogic.updateSettings);
         customPopover.add($ionicPopover, $scope, 'filterpopover', 'templates/filter-popover.html',traceLogic.updateSettings);
+        customPopover.add($ionicPopover, $scope, 'averagePopover', 'templates/average-popover.html', traceLogic.updateSettings);
         // customPopover.add($ionicPopover, $scope, 'helpover','pages/trace/trace-help.html');
         customPopover.addHelp($ionicModal, $scope, 'helpModal','pages/trace/trace-help.html');
 
+        $scope.wadup = "FIEWOHFWIEPHFPWEH"
         $scope.pageLogic = traceLogic;
         $scope.hardwareLogic = hardwareLogic;
         $scope.updating = false;
+        $scope.samplesArray = []
+        $scope.sampleAvg = []
+        $scope.performAveraging = false
 
         $scope.onChange = function(){
             if (afID){
@@ -30,12 +35,33 @@
             paintStep();
         };
 
+        $scope.startAveraging = function() {
+            $scope.performAveraging = true
+            $scope.samplesArray = []
+        }
+
+        $scope.getAverageValues = function() {
+            return $scope.samplesArray.map(sampleItem => sampleItem / 2.0).join(",")
+        }
+
         function updateAnimate(){
             if ($scope.updating)return; // don't try to draw any graphics while the settings are being changed
 
             var dataIn = dataHandler.getData()
             const positiveData = dataIn[1].map(data => Math.abs(data))
-            console.log("DATA IN", positiveData)
+            positiveData.map(data => {
+                if ($scope.performAveraging) {
+                    if ($scope.samplesArray.length < 10) {
+                        $scope.samplesArray.push(data)
+                    } else {
+                        const newAvg = $scope.samplesArray.reduce((p, c) => p + c, 0) / 10
+                        $scope.sampleAvg.push(newAvg)
+                        $scope.performAveraging = false
+
+                        console.log("New Avg.", newAvg)
+                    }
+                }
+            })
             if (dataIn === null || dataIn === angular.undefined ||
                 dataIn[0] === angular.undefined || dataIn[0].length === 0){return;}
             tracePlot.update(dataIn, dataHandler.controls.live);
