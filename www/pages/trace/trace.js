@@ -56,7 +56,12 @@
         $scope.getAverageValues = function() {
             const values = $scope.sampleAvg.map(sampleItem => sampleItem / 0.3 * 100).join(",")
             // console.log(values)
-            return values
+            return {
+                values: values,
+                peak: (Math.max(...$scope.sampleAvg)).toFixed(6),
+                area: ($scope.sampleAvg.reduce((p, c) => p + c, 0)).toFixed(6),
+                average: ($scope.sampleAvg.reduce((p, c) => p + c, 0) / $scope.sampleAvg.length).toFixed(6)
+            }
         }
 
         function updateAnimate(){
