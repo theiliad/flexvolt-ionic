@@ -8,7 +8,7 @@
 
 (function () {
     'use strict';
-    angular.module('flexvolt', [
+    const app = angular.module('flexvolt', [
         'ionic',
         'ngSanitize',
         'flexvolt.controllers',

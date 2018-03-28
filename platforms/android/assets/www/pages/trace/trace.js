@@ -23,6 +23,7 @@
         $scope.samplesArray = []
         $scope.sampleAvg = []
         $scope.performAveraging = false
+        $scope.secondsLeft = 5
 
         $scope.onChange = function(){
             if (afID){
@@ -38,10 +39,24 @@
         $scope.startAveraging = function() {
             $scope.performAveraging = true
             $scope.samplesArray = []
+            $scope.sampleAvg = []
+
+            $scope.interval = setInterval(function() {
+                console.log("INTERVAL")
+                $scope.secondsLeft--
+
+                if ($scope.secondsLeft === 0) {
+                    clearInterval($scope.interval)
+                    $scope.performAveraging = false
+                    $scope.secondsLeft = 5
+                }
+            }, 1000)
         }
 
         $scope.getAverageValues = function() {
-            return $scope.samplesArray.map(sampleItem => sampleItem / 2.0).join(",")
+            const values = $scope.sampleAvg.map(sampleItem => sampleItem / 0.3 * 100).join(",")
+            // console.log(values)
+            return values
         }
 
         function updateAnimate(){
@@ -56,7 +71,7 @@
                     } else {
                         const newAvg = $scope.samplesArray.reduce((p, c) => p + c, 0) / 10
                         $scope.sampleAvg.push(newAvg)
-                        $scope.performAveraging = false
+                        $scope.samplesArray = []
 
                         console.log("New Avg.", newAvg)
                     }

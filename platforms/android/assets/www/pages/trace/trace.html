@@ -16,12 +16,21 @@
 
       <!-- <average-popover></average-popover> -->
       <button class="button" ng-click="startAveraging()" ng-disabled="performAveraging">
-            Start
+            {{performAveraging ? secondsLeft + 's' : 'Start'}}
       </button>
 
       <button class="button" ng-click="averagePopover.show($event)" ng-disabled="samplesArray.length == 0">
           Show Results
       </button>
+
+      <broadcaster
+        has-stream="hasStream"
+        room-name="roomName"
+        mirror="true"
+        muted="true"
+        is-broadcasting="isBroadcasting">
+      </broadcaster>
+
 
       <save-panel ng-if="mobile"></save-panel>
   </ion-content>
