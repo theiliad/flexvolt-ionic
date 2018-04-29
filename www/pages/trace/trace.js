@@ -1,3 +1,5 @@
+var firebaseRef = null
+
 (function () {
     'use strict';
 
@@ -16,7 +18,34 @@
         // customPopover.add($ionicPopover, $scope, 'helpover','pages/trace/trace-help.html');
         customPopover.addHelp($ionicModal, $scope, 'helpModal','pages/trace/trace-help.html');
 
-        $scope.wadup = "FIEWOHFWIEPHFPWEH"
+
+
+
+
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.onload = function(){
+            var config = {
+                apiKey: "AIzaSyB5__nHtPnD4n20Zd7mlJ4QvfExi67VSnY",
+                authDomain: "flexvolt-12163.firebaseapp.com",
+                databaseURL: "https://flexvolt-12163.firebaseio.com",
+                projectId: "flexvolt-12163",
+                storageBucket: "",
+                messagingSenderId: "119340612248"
+            }
+
+            firebaseRef = firebase
+            firebase.initializeApp(config)
+        }.bind($scope)
+        script.src = 'https://www.gstatic.com/firebasejs/4.12.1/firebase.js'
+        document.getElementsByTagName('head')[0].appendChild(script);
+
+
+
+
+
+
         $scope.pageLogic = traceLogic;
         $scope.hardwareLogic = hardwareLogic;
         $scope.updating = false;
@@ -63,6 +92,11 @@
                         console.log(`X: ${x}`)
                         console.log(typeof $scope.tempValues[2], parseInt($scope.tempValues[2]))
                         $scope.graphValues.push(x)
+
+                        if (firebaseRef) {
+                            const database = firebaseRef.database()
+                            database.ref('/values').set($scope.getAverageValues())
+                        }
                     }
 
                     console.log("FINAL RESULT", $scope.graphValues)
